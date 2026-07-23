@@ -1,86 +1,155 @@
-/******/ (function() { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ([
-/* 0 */,
-/* 1 */
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+(() => {
+  // src/js/modules/coreModule.js
+  var coreModule = () => {
+    document.querySelectorAll(".core-module").forEach((root) => {
+      root.dataset.coreModuleReady = "true";
+    });
+  };
+  var coreModule_default = coreModule;
 
-__webpack_require__.r(__webpack_exports__);
-var coreModule = function coreModule() {
-  document.querySelectorAll('.core-module').forEach(function (root) {
-    // Toda consulta y listener queda acotado a root.
-    root.dataset.coreModuleReady = 'true';
-  });
-};
-/* harmony default export */ __webpack_exports__["default"] = (coreModule);
+  // src/js/modules/internalModule.js
+  var internalModule = () => {
+    document.querySelectorAll(".internal-module").forEach((root) => {
+      root.dataset.internalModuleReady = "true";
+    });
+  };
+  var internalModule_default = internalModule;
 
-/***/ }),
-/* 2 */
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+  // src/js/modules/siteHeader.js
+  var siteHeader = () => {
+    document.querySelectorAll(".site-header").forEach((root) => {
+      if (root.dataset.siteHeaderReady === "true") return;
+      root.dataset.siteHeaderReady = "true";
+      const toggle = root.querySelector(".site-header__toggle");
+      const panel = root.querySelector(".site-header__panel");
+      if (!toggle || !panel) return;
+      const labelOpen = root.dataset.menuOpen || "Open menu";
+      const labelClose = root.dataset.menuClose || "Close menu";
+      const setOpen = (open) => {
+        root.classList.toggle("site-header--open", open);
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        toggle.setAttribute("aria-label", open ? labelClose : labelOpen);
+      };
+      toggle.addEventListener("click", () => {
+        setOpen(!root.classList.contains("site-header--open"));
+      });
+      root.querySelectorAll(".site-header__link, .site-header__cta, .site-header__lang-btn").forEach((link) => {
+        link.addEventListener("click", () => setOpen(false));
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") setOpen(false);
+      });
+    });
+  };
+  var siteHeader_default = siteHeader;
 
-__webpack_require__.r(__webpack_exports__);
-var internalModule = function internalModule() {
-  document.querySelectorAll('.internal-module').forEach(function (root) {
-    // Toda consulta y listener queda acotado a root.
-    root.dataset.internalModuleReady = 'true';
-  });
-};
-/* harmony default export */ __webpack_exports__["default"] = (internalModule);
+  // src/js/modules/projectsSlider.js
+  var projectsSlider = () => {
+    if (typeof window.Swiper === "undefined") return;
+    document.querySelectorAll(".projects-slider").forEach((root) => {
+      if (root.dataset.projectsSliderReady === "true") return;
+      root.dataset.projectsSliderReady = "true";
+      const el = root.querySelector(".projects-slider__swiper");
+      const prev = root.querySelector(".projects-slider__nav--prev");
+      const next = root.querySelector(".projects-slider__nav--next");
+      const pagination = root.querySelector(".projects-slider__pagination");
+      if (!el) return;
+      new window.Swiper(el, {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        loop: false,
+        watchOverflow: true,
+        pagination: pagination ? {
+          el: pagination,
+          clickable: true
+        } : void 0,
+        navigation: {
+          prevEl: prev,
+          nextEl: next
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20
+          },
+          960: {
+            slidesPerView: 3,
+            spaceBetween: 24
+          }
+        }
+      });
+    });
+  };
+  var projectsSlider_default = projectsSlider;
 
-/***/ })
-/******/ 	]);
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	}();
-/******/ 	
-/************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-!function() {
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_coreModule__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _modules_internalModule__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+  // src/js/modules/faq.js
+  var faq = () => {
+    document.querySelectorAll(".faq").forEach((root) => {
+      if (root.dataset.faqReady === "true") return;
+      root.dataset.faqReady = "true";
+      const items = Array.from(root.querySelectorAll(".faq__item"));
+      items.forEach((item) => {
+        const trigger = item.querySelector(".faq__trigger");
+        const panel = item.querySelector(".faq__panel");
+        if (!trigger || !panel) return;
+        trigger.addEventListener("click", () => {
+          const isOpen = item.classList.contains("faq__item--open");
+          items.forEach((other) => {
+            const otherTrigger = other.querySelector(".faq__trigger");
+            const otherPanel = other.querySelector(".faq__panel");
+            other.classList.remove("faq__item--open");
+            if (otherTrigger) otherTrigger.setAttribute("aria-expanded", "false");
+            if (otherPanel) otherPanel.hidden = true;
+          });
+          if (!isOpen) {
+            item.classList.add("faq__item--open");
+            trigger.setAttribute("aria-expanded", "true");
+            panel.hidden = false;
+          }
+        });
+      });
+    });
+  };
+  var faq_default = faq;
 
+  // src/js/modules/scrollReveal.js
+  var scrollReveal = () => {
+    const targets = document.querySelectorAll(".reveal");
+    if (!targets.length) return;
+    if (!("IntersectionObserver" in window)) {
+      targets.forEach((el) => el.classList.add("reveal--visible"));
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.remove("reveal--pending");
+          entry.target.classList.add("reveal--visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: "0px 0px -32px 0px"
+      }
+    );
+    targets.forEach((el) => {
+      el.classList.add("reveal--pending");
+      observer.observe(el);
+    });
+  };
+  var scrollReveal_default = scrollReveal;
 
-var initComponents = function initComponents() {
-  (0,_modules_coreModule__WEBPACK_IMPORTED_MODULE_0__["default"])();
-  (0,_modules_internalModule__WEBPACK_IMPORTED_MODULE_1__["default"])();
-};
-document.addEventListener('DOMContentLoaded', initComponents);
-}();
-/******/ })()
-;
+  // src/js/index.js
+  var initComponents = () => {
+    coreModule_default();
+    internalModule_default();
+    siteHeader_default();
+    projectsSlider_default();
+    faq_default();
+    scrollReveal_default();
+  };
+  document.addEventListener("DOMContentLoaded", initComponents);
+})();
 //# sourceMappingURL=index.js.map
