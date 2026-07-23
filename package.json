@@ -1,10 +1,10 @@
 {
-	"name": "front-end-prepros-boilerplate",
+	"name": "kikeestradadeveloper",
 	"version": "1.0.0",
-	"assetVersion": "1.0.4",
-	"description": "gh=pages link: https://kikeestradadev.github.io/front-end-prepros-boilerplate",
+	"assetVersion": "1.0.5",
+	"description": "gh=pages link: https://kikeestradadev.github.io/kikeestradadeveloper",
 	"main": "index.js",
-	"homepage": "https://kikeestradadev.github.io/front-end-prepros-boilerplate/",
+	"homepage": "https://kikeestradadev.github.io/kikeestradadeveloper/",
 	"scripts": {
 		"build": "node scripts/bump-assets.cjs",
 		"test": "echo \"Error: no test specified\" && exit 1",
@@ -15,12 +15,12 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/kikeestradadev/front-end-prepros-boilerplate.git"
+		"url": "git+https://github.com/kikeestradadev/kikeestradadeveloper.git"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/kikeestradadev/front-end-prepros-boilerplate/issues"
+		"url": "https://github.com/kikeestradadev/kikeestradadeveloper/issues"
 	}
 }
