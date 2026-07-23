@@ -1,0 +1,81 @@
+-
+	const faqDataAll = {
+		en: {
+			title: 'Frequently asked questions',
+			lead: 'Clear answers to what people ask me most before starting a project.',
+			items: [
+				{
+					question: 'How much does it cost to build a website or digital solution?',
+					answer: '[Short answer here]',
+				},
+				{
+					question: 'What services do you offer?',
+					answer: '[Short answer here]',
+				},
+				{
+					question: 'How long does a project take to be ready?',
+					answer: '[Short answer here]',
+				},
+				{
+					question: 'Do you work with clients in Costa Rica and other countries?',
+					answer: '[Short answer here]',
+				},
+				{
+					question: 'What makes your work different from a traditional agency?',
+					answer: '[Short answer here]',
+				},
+				{
+					question: 'What is an AI agent and how can it help my business?',
+					answer: '[Short answer here]',
+				},
+				{
+					question: 'Can you integrate payment gateways like Stripe, PayPal or SINPE?',
+					answer: '[Short answer here]',
+				},
+				{
+					question: 'Do you offer support after delivering the project?',
+					answer: '[Short answer here]',
+				},
+			],
+		},
+		es: {
+			title: 'Preguntas frecuentes',
+			lead: 'Respuestas claras a lo que más me consultan antes de empezar un proyecto.',
+			items: [
+				{
+					question: '¿Cuánto cuesta desarrollar un sitio web o solución digital?',
+					answer: '[Respuesta breve aquí]',
+				},
+				{
+					question: '¿Qué servicios ofrecés?',
+					answer: '[Respuesta breve aquí]',
+				},
+				{
+					question: '¿Cuánto tiempo tarda un proyecto en estar listo?',
+					answer: '[Respuesta breve aquí]',
+				},
+				{
+					question: '¿Trabajás con clientes de Costa Rica y otros países?',
+					answer: '[Respuesta breve aquí]',
+				},
+				{
+					question: '¿Qué diferencia a tu trabajo de una agencia tradicional?',
+					answer: '[Respuesta breve aquí]',
+				},
+				{
+					question: '¿Qué es un agente de IA y cómo puede beneficiar a mi negocio?',
+					answer: '[Respuesta breve aquí]',
+				},
+				{
+					question: '¿Podés integrar pasarelas de pago como Stripe, PayPal o SINPE?',
+					answer: '[Respuesta breve aquí]',
+				},
+				{
+					question: '¿Ofrecés soporte después de entregar el proyecto?',
+					answer: '[Respuesta breve aquí]',
+				},
+			],
+		},
+	}
+
+	const faqData = faqDataAll[typeof currentLang !== 'undefined' ? currentLang : 'en'] || faqDataAll.en
